@@ -38,7 +38,6 @@ docker run -p 8000:8000 -v $(pwd):/app orange-team-assessment uvicorn main:app -
     - **Do NOT hardcode any API keys; use environment variables or configuration.**
     - Complete the `Dockerfile` to containerize the FastAPI app.
     - Add any missing dependencies to `requirements.txt`.
-    - (Optional) Fill in the test logic in `test_assessment.py`.
 3. **Build and run the application locally and/or in Docker.**
 4. **Demonstrate the API by ingesting documents and querying for answers.**
 5. **Submit your completed code and a brief write-up (1-2 paragraphs) explaining your approach and any design decisions.**
@@ -65,7 +64,6 @@ docker run -p 8000:8000 -v $(pwd):/app orange-team-assessment uvicorn main:app -
 - Code clarity and organization
 - Proper use of FastAPI and Docker
 - Ability to reason about and implement vector retrieval
-- (Bonus) Test coverage
 
 ---
 
