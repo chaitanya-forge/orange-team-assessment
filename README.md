@@ -3,8 +3,6 @@
 ## Overview
 This assessment tests your ability to implement a simple Retrieval-Augmented Generation (RAG) pipeline using FastAPI, and basic vector retrieval. You will complete and containerize a minimal RAG API skeleton. You are expected to fill in the blanks (marked as `# TODO` or `# BLANK`) in the provided files.
 
-**Important:** You must use only OpenAI APIs for both embeddings (e.g., `text-embedding-ada-002`) and LLM answer generation (e.g., `gpt-3.5-turbo` or `gpt-4`).
-
 
 ---
 
@@ -26,12 +24,15 @@ The API will be available at http://localhost:8000
 
 ## Instructions
 1. **Clone the repository or download the files.**
-2. **Complete the following tasks:**
+2. **Set up the environment**
+    - Create a virtual environment and install dependencies
+    - Run the application locally
+    - write Health Check endpoint
+3. **Complete the following tasks:**
     - Fill in the blanks in `src/retriever.py` to implement document embedding and retrieval.
+        - Demonstrate the API by ingesting the document (data/FAQs.pdf).
     - Implement the embedding function in `src/generate.py` using the OpenAI Embedding API (see `openai_embed`).
     - Integrate answer generation in the `/query` endpoint using the OpenAI Chat Completion API (see `openai_llm_answer`).
-3. **Build and run the application locally and/or in Docker.**
-4. **Demonstrate the API by ingesting the document (data/FAQs.pdf).**
 
 ---
 
@@ -59,7 +60,19 @@ The API will be available at http://localhost:8000
 
 Part 1: (Setting up environment, running the app locally)
 
+    - Create a virtual environment and install dependencies
+    - Run the application locally
+    - write Health Check endpoint
+
 Part 2: (Implement the retriever)
 
+    - Implement document embedding and retrieval
+    - Implement add_documents method
+    - Implement retrieve method
+
 Part 3: (Implement the generate function)
+
+    - Implement generate_answer method
+    - Implement get_closest_docs method
+    - Implement openai_llm_answer method
 
