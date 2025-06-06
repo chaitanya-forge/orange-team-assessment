@@ -1,26 +1,27 @@
-# Machine Learning Engineering Assessment: RAG, FastAPI, Docker
+# Machine Learning Engineering Assessment: RAG, FastAPI
 
 ## Overview
-This assessment tests your ability to implement a simple Retrieval-Augmented Generation (RAG) pipeline using FastAPI, Docker, and basic vector retrieval. You will complete and containerize a minimal RAG API skeleton. You are expected to fill in the blanks (marked as `# TODO` or `# BLANK`) in the provided files.
+This assessment tests your ability to implement a simple Retrieval-Augmented Generation (RAG) pipeline using FastAPI, and basic vector retrieval. You will complete and containerize a minimal RAG API skeleton. You are expected to fill in the blanks (marked as `# TODO` or `# BLANK`) in the provided files.
 
 **Important:** You must use only OpenAI APIs for both embeddings (e.g., `text-embedding-ada-002`) and LLM answer generation (e.g., `gpt-3.5-turbo` or `gpt-4`).
 
 
 ---
 
-## Running the Application with Docker
+## Running the Application
 
-### 1. Build the Docker Image
+### 1. Create a virtual environment and install dependencies
 ```sh
-docker build -t orange-team-assessment .
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
+
+### 2. Run the Application
+```sh
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload```
 The API will be available at http://localhost:8000
 
-### 3. Develop with Live Code Reload
-For local development, mount your code as a volume and enable auto-reload:
-```sh
-docker run -p 8000:8000 -v $(pwd):/app orange-team-assessment uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-```
 ---
 
 ## Instructions
@@ -53,4 +54,12 @@ docker run -p 8000:8000 -v $(pwd):/app orange-team-assessment uvicorn main:app -
 - Correctness and completeness of the RAG pipeline
 - Code clarity and organization
 - Proper use of FastAPI and Docker
+
+
+
+Part 1: (Setting up environment, running the app locally)
+
+Part 2: (Implement the retriever)
+
+Part 3: (Implement the generate function)
 

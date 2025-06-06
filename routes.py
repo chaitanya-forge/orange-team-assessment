@@ -1,12 +1,19 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import  APIRouter, HTTPException
 from typing import List
 from models import QueryRequest, RagResponse
-## TODO: Import generate function from src.generate or src.retriever
+from src.generate import AnswerGenerator
+
+# Instantiate once for reuse
+answer_generator = AnswerGenerator()
 
 router = APIRouter()
 
 ## TODO: Add a Health Check endpoint
 ## COde Here
+
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
 
 
 @router.post("/query", response_model=RagResponse)
@@ -14,10 +21,10 @@ def rag_query(req: QueryRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query must not be empty.")
 
-    # TODO: Generate answer using context and query using OpenAI LLM
-    # BLANK: Candidate to implement OpenAI LLM call
-    # Example: answer = openai_llm_answer(req.query, context)
-    answer = "BLANK: Candidate to implement OpenAI LLM answer generation."
+    # Generate answer and context using AnswerGenerator
+    result = answer_generator.generate_answer(req.query)
+    answer = result["answer"]
+    context = result["context"]
     return RagResponse(answer=answer, context=context)
 
 @router.post("/ingest")
