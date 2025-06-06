@@ -13,23 +13,24 @@ router = APIRouter()
 
 @router.get("/health")
 def health_check():
-    return {"status": "ok"}
-
+    ## TODO: Implement a health check endpoint
+    pass
 
 @router.post("/query", response_model=RagResponse)
 def rag_query(req: QueryRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query must not be empty.")
 
-    # Generate answer and context using AnswerGenerator
-    result = answer_generator.generate_answer(req.query)
-    answer = result["answer"]
-    context = result["context"]
-    return RagResponse(answer=answer, context=context)
+    # TODO: Generate answer and context using AnswerGenerator
+    # Call answer_generator.generate_answer(req.query) and return RagResponse
+    # Example:
+    # result = answer_generator.generate_answer(req.query)
+    # return RagResponse(answer=result["answer"], context=result["context"])
+    pass
 
 @router.post("/ingest")
 def ingest_docs(docs: List[str]):
     if not docs:
         raise HTTPException(status_code=400, detail="No documents provided.")
-    retriever.add_documents(docs)
-    return {"status": "ok", "num_documents": len(docs)}
+    # TODO: Call answer_generator.retriever.add_documents with the provided docs
+    pass 

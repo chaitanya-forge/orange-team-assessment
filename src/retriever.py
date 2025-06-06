@@ -2,8 +2,9 @@ from openai import OpenAI
 
 from langchain_openai import OpenAIEmbeddings
 
-from langchain_core.vectorstores import InMemoryVectorStore
-from langchain_community.document_loaders import PyPDFLoader
+## Hint: You are free to use any vector store and document loader
+# from langchain_core.vectorstores import InMemoryVectorStore
+# from langchain_community.document_loaders import PyPDFLoader
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -11,7 +12,8 @@ load_dotenv()
 class Retriever:
     def __init__(self):
         self.embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
-        self.vector_store = InMemoryVectorStore(self.embeddings)
+        ## TODO: Initialize the vector store
+        ## TODO: Add documents to the vector store
         self.add_documents("data/FAQs.pdf")
 
     def get_embedding(self, doc):
@@ -19,23 +21,22 @@ class Retriever:
         return response
 
     def add_documents(self, file_path):
-        # Use the synchronous PyPDFLoader and load method
-        loader = PyPDFLoader(file_path)
-        pages = loader.load()
-        self.vector_store = InMemoryVectorStore.from_documents(pages, OpenAIEmbeddings())
+        """
+        TODO: Implement this method to load the PDF file, split it into pages, and add to the vector store using embeddings.
+        Use PyPDFLoader and InMemoryVectorStore.
+        """
+        pass
 
     def retrieve(self, query, k=2):
-        docs = self.vector_store.similarity_search(query, k=k)
-        return docs
+        """
+        TODO: Implement this method to retrieve the k most relevant documents from the vector store for the query.
+        """
+        pass
 
 
 if __name__ == "__main__":
-
-    import asyncio
-    
-
     retriever = Retriever()
     # print(retriever.get_embedding("Hello World"))
-    asyncio.run(retriever.add_documents("data/FAQs.pdf"))
+    retriever.add_documents("data/FAQs.pdf")
     print(retriever.retrieve("Will my offer be confidential?"))
     
