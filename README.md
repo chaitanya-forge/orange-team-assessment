@@ -36,8 +36,9 @@ The API will be available at http://localhost:8000
 
 #### File Guide
 - `retriever.py`: In-memory vector retriever skeleton. Complete embedding and retrieval logic.
-- `main.py`: FastAPI app. Complete embedding integration and RAG endpoint logic.
-- `Dockerfile`: Containerization skeleton. Complete to run the FastAPI app in Docker.
+- `generate.py`: Answer generation skeleton. Complete embedding and retrieval logic.
+- `routes.py`: API routes for ingestion and query.
+- `models.py`: Pydantic models for request and response.
 - `requirements.txt`: Add any missing dependencies (e.g., for embeddings).
 
 ---
